@@ -2,14 +2,14 @@
 <html>
 <body>
 
-<h2>HTML Forms</h2>
+<h2>Anagram solver</h2>
 
 
 <label for="fname">Jumbled Text:</label><br>
 <input type="text" id="jumbledText" name="jumbledText" value="asdfg"><br>
 <label for="fname">Letters Left:</label><br>
 <p id="lettersLeft"></p>
-
+<button id="randomizeButton" onclick="randomize()"> Randomize </button> <br>
 <label for="lname">Solution:</label><br>
 <input type="text" id="solutionText" name="solutionText" value=""><br><br>
 
@@ -48,6 +48,14 @@
 
   function removeByIndex(str,index) {
       return str.slice(0,index) + str.slice(index+1);
+  }
+
+  function randomize() {
+    let lettersLeft = document.getElementById('lettersLeft').textContent;
+
+    lettersLeft = lettersLeft.split('').sort(function(){return 0.5-Math.random()}).join('');
+
+    document.getElementById('lettersLeft').textContent = lettersLeft;
   }
 
   updateLettersLeft();
